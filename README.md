@@ -1,4 +1,9 @@
-basicserver
+Basic Server
 ===========
 
-Aplicação básica contendo Servidor Rest + JSF/PrimeFaces + Spring + Hibernate + DB (Postgresql)
+Aplicação servidor básica usando:
+- Servidor Rest
+- JSF/PrimeFaces
+- Spring
+- Hibernate
+- DB (Postgresql)
