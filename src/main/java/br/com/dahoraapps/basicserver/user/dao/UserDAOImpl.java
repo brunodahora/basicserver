@@ -3,6 +3,8 @@ package br.com.dahoraapps.basicserver.user.dao;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import br.com.dahoraapps.basicserver.model.User;
 
@@ -16,8 +18,10 @@ import br.com.dahoraapps.basicserver.model.User;
  *
  */
 
+@Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
 
+	@Autowired
 	private SessionFactory sessionFactory;
 
 	/**

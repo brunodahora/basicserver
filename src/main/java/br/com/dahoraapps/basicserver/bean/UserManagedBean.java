@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.jsf.FacesContextUtils;
 
 import br.com.dahoraapps.basicserver.model.User;
 import br.com.dahoraapps.basicserver.user.service.UserService;
@@ -31,7 +34,7 @@ public class UserManagedBean implements Serializable {
 	private static final String ERROR   = "error";
 
 	//Spring User Service is injected...
-	@ManagedProperty(value="#{UserService}")
+	@Autowired
 	UserService userService;
 
 	List<User> userList;
@@ -39,6 +42,11 @@ public class UserManagedBean implements Serializable {
 	private int id;
 	private String name;
 	private String surname;
+	
+	public UserManagedBean() {
+		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+		userService = ctx.getBean(UserService.class);
+	}
 
 	/**
 	 * Add User
